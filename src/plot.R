@@ -1,20 +1,9 @@
 .libPaths(".")
-  install.packages("latticeExtra", repos='http://cran.us.r-project.org')
-  install.packages("FLAssess", repos="http://flr-project.org/R")
-  install.packages("FLXSA", repos="http://flr-project.org/R")
+  if(!("latticeExtra" %in% installed.packages()))install.packages("latticeExtra", repos='http://cran.us.r-project.org')
+  if(!("FLAssess" %in% installed.packages()))install.packages("FLAssess", repos="http://flr-project.org/R")
+  if(!("FLXSA" %in% installed.packages()))install.packages("FLXSA", repos="http://flr-project.org/R")
 
 source("src/common.R")
-
-plotcounter<-1
-tit.list<-list()
-
-setcap<-function(title="", caption=""){   
- tit.list[length(tit.list)+1]<<-paste("# Title",plotcounter,"\n")
- tit.list[length(tit.list)+1]<<-paste(title,"\n")
- tit.list[length(tit.list)+1]<<-paste("# Caption",plotcounter,"\n")
- tit.list[length(tit.list)+1]<<-paste(caption,"\n")
- plotcounter<<-plotcounter+1 
-}
 
 library(FLXSA)
 data(ple4)
